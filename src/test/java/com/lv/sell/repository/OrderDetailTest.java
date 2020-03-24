@@ -38,6 +38,7 @@ public class OrderDetailTest {
     public void findByOrderIdTest() {
         List<OrderDetail> list = orderDetailRepository.findByOrderId("12345");
         System.out.println(list);
+        System.out.println("测试撤销11111");
 
     }
 }
