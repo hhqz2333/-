@@ -47,6 +47,7 @@ public class OrderMasterTest {
       Pageable page = PageRequest.of(1,2);
         Page<OrderMaster> byBuyerOpenid = orderMasterRepository.findByBuyerOpenid("2", page);
         System.out.println(byBuyerOpenid);
+        System.out.println("测试git撤销22222");
 
     }
 
