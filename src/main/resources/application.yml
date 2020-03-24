@@ -3,8 +3,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://192.168.1.106/ordering?characterEncoding=utf-8&useSSL=false
+    password: Kukumalu3312
+    url: jdbc:mysql://rm-bp1bm22j5h4hj62q0go.mysql.rds.aliyuncs.com:3306/lv-ordering?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
     open-in-view: true
