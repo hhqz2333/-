@@ -2,6 +2,7 @@ package com.lv.sell.service;
 
 import com.lv.sell.dataobject.OrderMaster;
 import com.lv.sell.dto.OrderMasterDto;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface OrderService {
     // 查询单个订单
     OrderMasterDto selectByOrderId(String orderId);
     // 查询多个订单列表
-    List<OrderMasterDto> sleectAll(String buyerOpenid, Pageable pageable);
+    Page<OrderMasterDto> sleectAll(String buyerOpenid, Pageable pageable);
     // 取消订单
     OrderMasterDto cancelOrder(OrderMasterDto orderMasterDto);
     // 完结订单
