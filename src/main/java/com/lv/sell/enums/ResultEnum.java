@@ -15,6 +15,7 @@ public enum ResultEnum {
     PARAMETER_CHECKING_ERROR(18,"参数校验失败"),
     SHOPPING_CART_CANNOT_BE_EMPTY(19,"购物车不能为空"),
     OPENID_NOT_NULL(20,"openid不能为空"),
+    OPENID_BUYER_ERR(21,"当前登录人没有该订单"),
     ;
     private int code;
     private String message;

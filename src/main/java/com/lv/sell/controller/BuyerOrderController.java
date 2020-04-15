@@ -1,11 +1,11 @@
 package com.lv.sell.controller;
 
 import com.lv.sell.converter.OrderForm2OrderMasterDtoConverter;
-import com.lv.sell.dataobject.OrderMaster;
 import com.lv.sell.dto.OrderMasterDto;
 import com.lv.sell.enums.ResultEnum;
 import com.lv.sell.excetion.SellExcetion;
 import com.lv.sell.form.OrderForm;
+import com.lv.sell.service.BuyerServer;
 import com.lv.sell.service.OrderService;
 import com.lv.sell.until.ResultUntilVo;
 import com.lv.sell.vo.ResultVo;
@@ -13,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -24,7 +22,6 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author ：LV hang
@@ -37,6 +34,8 @@ import java.util.stream.Collectors;
 public class BuyerOrderController {
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private BuyerServer buyerServer;
 
     // 创建订单
     @PostMapping("/create")
@@ -70,6 +69,20 @@ public class BuyerOrderController {
         Page<OrderMasterDto> orderMasterDtos = orderService.sleectAll(openid, pageRequest);
         return ResultUntilVo.success(orderMasterDtos);
     }
+
     // 订单详情
+    @GetMapping("/detail")
+    public ResultVo<OrderMasterDto> detail(@RequestParam(value = "openid") String openid,
+                                           @RequestParam(value = "orderId") String orderId) {
+        OrderMasterDto orderMasterDto = buyerServer.chenkDetail(openid, orderId);
+        return ResultUntilVo.success(orderMasterDto);
+    }
+
     // 取消订单
+    @PostMapping("/cancelOrder")
+    public ResultVo cancelOrder(@RequestParam(value = "openid") String openid,
+                                @RequestParam(value = "orderId") String orderId) {
+        OrderMasterDto orderMasterDto = buyerServer.chenkCancelOrder(openid, orderId);
+        return ResultUntilVo.success();
+    }
 }

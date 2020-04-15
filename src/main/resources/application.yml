@@ -12,7 +12,7 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: true
   jackson:
-    default-property-inclusion: non_null
+    default-property-inclusion: non_null # 控制为null的属性不返回
 server:
   servlet:
     context-path: /sell
